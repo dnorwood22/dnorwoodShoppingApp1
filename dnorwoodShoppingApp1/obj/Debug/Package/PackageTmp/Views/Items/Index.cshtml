@@ -1,0 +1,83 @@
+﻿@model IEnumerable<dnorwoodShoppingApp1.Models.CodeFirst.Item>
+       @if (User.IsInRole("Admin"))
+       {
+        <button class="w3-round w3-amber">@Html.ActionLink("Create New", "Create")</button>
+       } 
+
+  <div class="row">               
+                <div class="w3-container">
+    @foreach (var item in Model)
+    { 
+        <div class="col-md-3">
+            <a href="@Url.Action("Details", new { id = item.Id })"></a>
+            <img src="@item.MediaURL" style="width: 100%" class="w3-hover-sepia"/>            
+            <h4>@item.Name</h4>
+            <p><b>@item.Price</b></p>
+            @using (Html.BeginForm("Create", "CartItems", new { id = item.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div>
+                    <p><button type="submit" class="w3-button w3-round w3-blue">Buy Now<i class="fa fa-shopping-cart"></i></button>
+                </div>
+            }
+
+
+            @if (User.IsInRole("Admin"))
+            {
+
+                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-warning">Edit</a>
+                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Delete</a>               
+            }
+        </div>
+    }
+            </div>
+            </div>
+
+                @*<div class="col-md-3 w3-container w3-display-container">
+                    <img src="~/assets/Images/m2.jpg" />
+                    <span class="w3-tag w3-display-topleft">New</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <button class="w3-button">Buy Now<i class="fa fa-shopping-cart"></i></button>
+                    </div>
+                        <p>CFW-1100<br></p>
+                        <p><b>$1600.00</b></p>                
+                </div>
+                <div class="col-md-3 w3-container">
+                    <img src="~/assets/Images/m3.jpg" />
+                    <p>CFW-850</p>
+                    <p><b>$1550.00</b></p>
+                </div>
+                <div class="col-md-3 w3-container">
+                    <img src="~/assets/Images/m5.jpg" />
+                    <p>CFW-2500</p>
+                    <p><b>$8700.00</b></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 w3-container">
+                    <img src="~/assets/Images/m6.jpg" />
+                    <p>CFW-550</p>
+                    <p><b>$1800.00</b></p>
+                </div>
+                <div class="col-md-3 w3-container">
+                    <img src="~/assets/Images/m7.jpg" />
+                    <p>CFW-1200</p>
+                    <p><b>$1650.00</b></p>
+                </div>
+                <div class="col-md-3 w3-container w3-display-container">                   
+                    <img src="~/assets/Images/m8.jpg" class="w3-hover-opacity" />
+                    <span class="w3-tag w3-display-topleft">Sale</span>
+                    <div class="w3-display-middle w3-display-hover">
+                        <button class="w3-button">Buy Now<i class="fa fa-shopping-cart"></i></button>
+                    </div>
+                    <p>CFW-650</p>
+                    <p><b>$950.00</b></p>
+                </div>
+                <div class="col-md-3 w3-container">
+                    <img src="~/assets/Images/m9.jpg" />
+                    <p>CFW-5500</p>
+                    <p><b>$15000.00</b></p>
+                </div>
+            </div>*@
+            <!--items content ends-->
+           

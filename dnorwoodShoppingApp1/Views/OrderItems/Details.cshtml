@@ -1,0 +1,58 @@
+﻿@model dnorwoodShoppingApp1.OrderItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Item.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        </div>
+        <div>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+        </div>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

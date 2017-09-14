@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ECommerce App</title>
+    <meta charset="utf-8" />
+    <link href="~/assets/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/assets/Content/watchstyle.css" rel="stylesheet" />
+    <link href="~/assets/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/assets/Content/mCustomStyle.css" rel="stylesheet" />
+    <style>
+        .top-leftone {
+            position: absolute;
+            top: 20px;
+            left: 50px;
+            font-size: 75px;
+            color: white;
+        }
+
+        .vertical-menu {
+            width: 200px;
+            height: 450px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!--side navbar begins-->
+    <nav>
+        <div class="w3-white">
+            <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+        </div>
+        <div class="w3-sidebar w3-bar-block w3-border-right vertical-menu" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-large" onclick="w3_close()">Close &times;</button>
+            <div>
+                <div>
+                    <h2 class="w3-bar-item w3-text-blue-gray">Watch Galaxy</></h2>
+                </div>
+                <br />
+                <b><a href="#" class="w3-bar-item w3-button">Hublot Series</a></b>
+                <b><a href="#" class="w3-bar-item w3-button">Invicta Series</a></b>
+            </div>
+            <div class="w3-container">
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button w3-blue-gray">
+                        Collection<i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="w3-dropdown-content w3-bar-block w3-hover-border-black">
+                        <a href="#" class="w3-bar-item w3-button">2016</a>
+                        <a href="#" class="w3-bar-item w3-button">2015</a>
+                        <a href="#" class="w3-bar-item w3-button">2014</a>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div>
+                <a href="#" class="w3-bar-item w3-button">Straps</a>
+                <a href="#" class="w3-bar-item w3-button">Parts</a>
+                <a href="#" class="w3-bar-item w3-button">Tools</a>
+                <a href="#" class="w3-bar-item w3-button">Accessories</a>
+            </div>
+            <br />
+            <div class="headingforMenu">
+                <a href="#" class="w3-bar-item w3-button w3-padding">Contact</a>
+                <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding" onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+                <a href="#" class="w3-bar-item w3-button w3-padding">Subscribe</a>
+            </div>
+        </div>
+    </nav>
+    <!--side nav bar ends-->
+    <!--items content starts-->
+    <div style="margin-left:200px; margin-top:83px">
+        <header class="w3-container w3-xlarge">
+            <p class="w3-right">
+                @Html.Partial("_LoginPartial")
+                <a href="@Url.Action("Index","CartItems")"><i class="fa fa-shopping-cart w3-margin-right"></i></a>
+                @if (Request.IsAuthenticated)
+                {
+                    @ViewBag.CartItems.Count
+                }
+                @using (Html.BeginForm("SearchResults", "Items", FormMethod.Post))
+                {
+                    <input type="text" name="search" /><button type="submit"><i class="fa fa-search"></i></button>
+                }
+            </p>
+        </header>
+        <div class="w3-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="~/assets/Images/3.jpg" class="img-responsive img-rounded"><br />
+                    <div class="top-leftone">
+                        Watch Galaxy
+                        <p>New Arrivals</p>
+                        <p>Collection 2017</p>
+                        <a href="@Url.Action("Index", "Items")" class="btn" style="background-color:black; padding-top: 10px; padding-right:10px; padding-bottom:10px; padding-left:10px" class="w3-hover-opacity">
+                            <h2>Shop Now</h2>
+                        </a>
+                    </div>
+                    <p>8 Items</p>
+                </div>
+            </div>
+            @RenderBody()
+            <div class="w3-container">
+                <div class="mySubscribe img-responsive">
+                    <h1>Subscribe</h1>
+                    <p>To get special offers and <span style="color:red"> VIP</span> treatment</p>
+                    <p><input placeholder="Enter e-mail" /></p>
+                    <div class="btn btn-danger">
+                        Subscribe
+                    </div>
+                </div>
+                <div style="background-color:lightgray; text-align:center">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Contact</h4>
+                            <p>Questions? Go ahead.</p>
+                            <p><input placeholder="Name" /></p>
+                            <p><input placeholder="Email" /></p>
+                            <p><input placeholder="Subject" /></p>
+                            <p><input placeholder="Message" /></p>
+                            <div class="btn btn-primary">
+                                Send
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>About</h4>
+                            <p><a href="#">About us</a></p>
+                            <p><a href="#">We're hiring</a></p>
+                            <p><a href="#">Support</a></p>
+                            <p><a href="#">Find store</a></p>
+                            <p><a href="#">Shipment</a></p>
+                            <p><a href="#">Payment</a></p>
+                            <p><a href="#">Gift Card</a></p>
+                            <p><a href="#">Return</a></p>
+                            <p><a href="#">Help</a></p>
+                        </div>
+                        <div class="w3-col s4 w3-justify">
+                            <h4>Store</h4>
+                            <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+                            <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+                            <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+                            <h4>We accept</h4>
+                            <p><i class="fa fa-fw fa-cc-amex"></i>Amex</p>
+                            <p><i class="fa fa-fw fa-credit-card"></i>Credit Card</p>
+                            <br>
+                            <i class="fa fa-facebook-official w3-hover-opacity w3 large"></i>
+                            <i class="fa fa-instagram w3-hover-opacity w3 large"></i>
+                            <i class="fa fa-snapchat w3-hover-opacity w3 large"></i>
+                            <i class="fa fa-pinterest w3-hover-opacity w3 large"></i>
+                            <i class="fa fa-twitter w3-hover-opacity w3 large"></i>
+                            <i class="fa fa-linkedin w3-hover-opacity w3 large"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--footer starts -->
+            <footer style="background-color:black; color:white; padding-top:10px; padding-right:10px; padding-bottom:10px; padding-left:10px">
+                <center>
+                    <div>
+                        <p>
+                            Powered by <a href="https://www.coderfoundry.com">CoderFoundry</a> &copy; Copyright CoderFoundry
+                        </p>
+                    </div>
+                </center>
+            </footer>
+            <!--footer ends-->
+        </div>
+    </div>
+
+    <div id="newsletter" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom" style="padding:32px">
+            <div class="w3-container w3-white w3-center">
+                <i onclick="document.getElementById('newsletter').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+                <h2 class="w3-wide">NEWSLETTER</h2>
+                <p>Join our mailing list to receive updates on new arrivals and special offers.</p>
+                <p><input class="w3-input w3-border" type="text" placeholder="Enter e-mail"></p>
+                <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom" onclick="document.getElementById('newsletter').style.display='none'">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/assets/scripts/jquery-1.9.1.js"></script>
+    <script src="~/assets/scripts/bootstrap.js"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+        }
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+

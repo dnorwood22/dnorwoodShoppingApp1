@@ -1,0 +1,56 @@
+﻿@model IEnumerable<dnorwoodShoppingApp1.Models.CodeFirst.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          @Html.DisplayNameFor(model =>model.Item.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Count)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+     
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @(item.Count * item.Item.Price)
+        </td>
+        <td>
+            <button class="w3-yellow">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button> |
+            <button class="w3-orange">@Html.ActionLink("Details", "Details", "Items", new { id = item.Item.Id }, null)</button> |
+            <button class="w3-blue">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+        </td>
+    </tr>
+}
+            
+</table>
+<p>
+    Total:@ViewBag.CartTotal
+</p>
+<a href="@Url.Action("Create","Orders")" class="w3-button w3-hover-green">Proceed to Checkout</a>
+<br />
+<div>
+    <button class="w3-amber">@Html.ActionLink("Back to List", "Index", "Items")</button>
+</div>

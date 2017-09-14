@@ -1,0 +1,68 @@
+﻿@model dnorwoodShoppingApp1.Models.CodeFirst.Item
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Watch Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    
+    <p>
+        <img src="@Model.MediaURL" class="w3-hover-sepia" />
+    </p>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MediaURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MediaURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+    </dl>
+
+    
+
+</div>
+<p>
+    <button type="button" class="btn btn-success">@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</button> |
+    <button type="button" class="btn btn-primary">@Html.ActionLink("Back to List", "Index")</button>
+</p>

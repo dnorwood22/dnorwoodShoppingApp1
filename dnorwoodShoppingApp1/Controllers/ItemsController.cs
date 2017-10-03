@@ -42,7 +42,7 @@ namespace dnorwoodShoppingApp1.Controllers
         }
 
         // GET: Items/Create
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -51,7 +51,7 @@ namespace dnorwoodShoppingApp1.Controllers
         // POST: Items/Create        
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CreationDate,UpdatedDate,Name,Price,MediaURL,Description")] Item item, HttpPostedFileBase image)
@@ -65,7 +65,7 @@ namespace dnorwoodShoppingApp1.Controllers
 
             if (ModelState.IsValid)
             {
-                var filePath = "/assets/Images";
+                var filePath = "/assets/Images/";
                 var absPath = Server.MapPath("~" + filePath);
                 item.MediaURL = filePath + image.FileName;
                 image.SaveAs(Path.Combine(absPath, image.FileName));
@@ -114,7 +114,7 @@ namespace dnorwoodShoppingApp1.Controllers
                 db.Entry(item).State = EntityState.Modified;
                 if (image != null)
                 {
-                    var filePath = "/assets/Images";
+                    var filePath = "/assets/Images/";
                     var absPath = Server.MapPath("~" + filePath);
                     item.MediaURL = filePath + image.FileName;
                     image.SaveAs(Path.Combine(absPath, image.FileName));
